@@ -1,27 +1,17 @@
 //Import
 
 const express = require('express');
-const SerialPort = require('serialport');
-const readline = require('@serialport/parser-readline');
+//const readline = require('@serialport/parser-readline');
 const routes = require('./routes/index');
+const path = require('path');
+
 //Config
 
 const app = express();
 app.set('port', process.env.PORT || 3000);
-app.set('view engine', 'ejs')
-app.set('views', `${process.cwd}/views`);
-
-//Port
-
-const port = new SerialPort('COM3', {
-    baudRate: 115200
-}, (err)=>{
-    if(err) return console.error(`Error: ${err.message}.`)
-})
-
-port.on('error', (err)=>{
-    if(err) console.error(`Error: ${err.message}`)
-});
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/views'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //routes
 app.use('/', routes);
