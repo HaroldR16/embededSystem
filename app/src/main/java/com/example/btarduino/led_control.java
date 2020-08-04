@@ -70,7 +70,7 @@ public class led_control extends AppCompatActivity {
     private void ledOn(){
         if(btSocket != null){
            try {
-               btSocket.getOutputStream().write("1".toString().getBytes());
+               btSocket.getOutputStream().write("12".toString().getBytes());
            }catch(IOException e){
                Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
             }
@@ -80,7 +80,7 @@ public class led_control extends AppCompatActivity {
     private void ledOff(){
         if(btSocket != null){
             try {
-                btSocket.getOutputStream().write("0".toString().getBytes());
+                btSocket.getOutputStream().write("11".toString().getBytes());
             }catch(IOException e){
                 Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
             }
@@ -97,10 +97,10 @@ public class led_control extends AppCompatActivity {
             finish();
         }
     }
-    private void msg(String s)
+    /*private void msg(String s)
     {
         Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -128,7 +128,7 @@ public class led_control extends AppCompatActivity {
 
         @Override
         protected void onPreExecute(){
-            progress = ProgressDialog.show(led_control.this, "Connectig, please wait","XDxdxdxxdddddxdxx");
+            progress = ProgressDialog.show(led_control.this, "Conecting, please wait","XDxdxdxxdddddxdxx");
         }
 
         @Override
